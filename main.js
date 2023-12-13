@@ -19,13 +19,16 @@ function onSubmit(e) {
         msg.innerHTML = 'Please enter all fields'
         setTimeout(() =>  msg.remove(), 3000)
     } else {
-        // const li = document.createElement('li');
-        // li.appendChild(document.createTextNode(`${nameIn.value} : ${emailIn.value}`));
-        // userList.appendChild(li);
         
-        // store in localStorage
-        localStorage.setItem('Name', nameIn.value);
-        localStorage.setItem('Email', emailIn.value);
+        // store in localStorage 
+        const userData = {
+            name : nameIn.value,
+            email : emailIn.value
+        };
+
+        const userData_serialized = JSON.stringify(userData);
+
+        localStorage.setItem('userData', userData_serialized);
         // Clear fields
         nameIn.value = '';
         emailIn.value = '';
